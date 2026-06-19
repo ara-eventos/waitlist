@@ -37,60 +37,72 @@
         </button>
       </nav>
       <section class="relative overflow-hidden">
+        <!-- Mobile Floating Icons (Sequential Popup) -->
+        <div class="md:hidden absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <img src="/public/drink.svg" alt="icon" class="absolute top-[12%] left-[6%] w-[42px] dark-invert mobile-cycle-1 opacity-0" />
+            <img src="/public/serve.svg" alt="icon" class="absolute top-[35%] right-[8%] w-[40px] mobile-cycle-2 opacity-0" />
+            <img src="/public/music.svg" alt="icon" class="absolute top-[65%] left-[5%] w-[38px] dark-invert mobile-cycle-3 opacity-0" />
+            <img src="/public/people.svg" alt="icon" class="absolute top-[22%] right-[6%] w-[45px] mobile-cycle-4 opacity-0" />
+            <img src="/public/cake.svg" alt="icon" class="absolute top-[50%] left-[8%] w-[42px] dark-invert mobile-cycle-5 opacity-0" />
+            <img src="/public/cut.svg" alt="icon" class="absolute top-[78%] right-[10%] w-[38px] mobile-cycle-6 opacity-0" />
+            <img src="/public/food.svg" alt="icon" class="absolute top-[18%] right-[25%] w-[44px] dark-invert mobile-cycle-7 opacity-0" />
+            <img src="/public/music2.svg" alt="icon" class="absolute top-[82%] left-[15%] w-[36px] mobile-cycle-8 opacity-0" />
+        </div>
+
         <div class="hidden md:block">
           <div class="absolute mt-40 ml-25 slide-in-left">
             <img
               src="/public/drink.svg"
               alt="icons"
-              class="roll-in-left-1 dark-invert"
+              class="roll-in-left-1 icon-hover dark-invert"
             />
             <img
               src="/public/serve.svg"
               alt="icons"
-              class="ml-55 roll-in-left-2"
+              class="ml-55 roll-in-left-2 icon-hover"
             />
             <img
               src="/public/food.svg"
               alt="icons"
-              class="ml-25 mt-20 roll-in-left-3 dark-invert"
+              class="ml-25 mt-20 roll-in-left-3 icon-hover dark-invert"
             />
             <img
               src="/public/people.svg"
               alt="icons"
-              class="mt-20 roll-in-left-4"
+              class="mt-20 roll-in-left-4 icon-hover"
             />
             <img
               src="/public/music.svg"
               alt="icons"
-              class="ml-55 -mt-10 roll-in-left-5 dark-invert"
+              class="ml-55 -mt-10 roll-in-left-5 icon-hover dark-invert"
             />
           </div>
           <div class="absolute mt-60 right-0 mr-25 slide-in-right">
-            <img src="/public/serve.svg" alt="icons" class="roll-in-right-1" />
+            <img src="/public/serve.svg" alt="icons" class="roll-in-right-1 icon-hover" />
             <img
               src="/public/people2.svg"
               alt="icons"
-              class="ml-55 -mt-7 roll-in-right-2 dark-invert"
+              class="ml-55 -mt-7 roll-in-right-2 icon-hover dark-invert"
             />
             <img
               src="/public/cake.svg"
               alt="icons"
-              class="ml-25 mt-20 roll-in-right-3 dark-invert"
+              class="ml-25 mt-20 roll-in-right-3 icon-hover dark-invert"
             />
             <img
               src="/public/cut.svg"
               alt="icons"
-              class="mt-15 roll-in-right-4"
+              class="mt-15 roll-in-right-4 icon-hover"
             />
             <img
               src="/public/music2.svg"
               alt="icons"
-              class="ml-55 -mt-5 roll-in-right-5"
+              class="ml-55 -mt-5 roll-in-right-5 icon-hover"
             />
           </div>
         </div>
         <div
-          class="relative flex flex-col justify-center items-center gap-[16px] md:gap-[24px] pt-[100px] md:pt-[200.22px] px-6"
+          class="relative flex flex-col justify-center items-center gap-[40px] md:gap-[24px] pt-[120px] md:pt-[200.22px] px-6 z-10 pointer-events-none"
         >
           <p
             class="flex uppercase font-[500] md:text-[14px] text-[12px] text-[#656565] dark:text-white meta-text"
@@ -101,10 +113,10 @@
             class="unbounded uppercase font-extrabold text-[36px] sm:text-[48px] md:text-[80px] leading-[44px] sm:leading-[56px] md:leading-[90px] hero-heading text-center fade-in-up-delay-1"
           >
             The party <br />
-            runs on <span class="text-[#F7B832] glow-accent"> Ara</span>
+            runs on <span class="text-[#F7B832] glow-accent text-shimmer"> Ara</span>
           </h1>
           <p
-            class="text-[#656565] dark:text-[#CFC7B7] text-[14px] sm:text-[16px] md:text-[18px] text-center max-w-[600px] fade-in-up-delay-2"
+            class="text-[#656565] dark:text-[#CFC7B7] text-[14px] sm:text-[16px] md:text-[18px] text-center max-w-[600px] blur-fade-in"
           >
             One link pulls every vendor into the plan. Everyone sees
             <br class="hidden md:inline" />
@@ -114,15 +126,44 @@
           </p>
         </div>
         <form
-          class="relative flex flex-col justify-center items-center pt-16 md:pt-37 gap-4 pb-30 md:pb-40 px-6"
+          class="relative flex flex-col justify-center items-center pt-12 md:pt-24 gap-4 pb-30 md:pb-40 px-6 z-10"
           id="waitlist-form"
         >
+          <div class="w-full max-w-[340px] md:max-w-[380px] flex flex-col gap-3 mb-2 fade-in-up-delay-1">
+            <p class="text-[14px] text-[#656565] dark:text-[#888888] text-center font-medium">I am signing up as a:</p>
+            <div class="flex flex-wrap justify-center gap-2">
+              <label class="cursor-pointer relative group">
+                <input type="radio" name="intent" value="planner" class="peer sr-only" required>
+                <div class="px-4 py-2 rounded-full border-[1.4px] border-[#DBE1E7] dark:border-[#403322] text-[#656565] dark:text-[#A0A0A0] text-[13px] peer-checked:bg-[#FFD75E] peer-checked:border-[#FFD75E] peer-checked:text-black dark:peer-checked:bg-[#FFC02E] dark:peer-checked:border-[#FFC02E] dark:peer-checked:text-black transition-all group-hover:border-[#FFD75E] dark:group-hover:border-[#FFC02E] font-medium">
+                  Planner
+                </div>
+              </label>
+              <label class="cursor-pointer relative group">
+                <input type="radio" name="intent" value="vendor" class="peer sr-only" required>
+                <div class="px-4 py-2 rounded-full border-[1.4px] border-[#DBE1E7] dark:border-[#403322] text-[#656565] dark:text-[#A0A0A0] text-[13px] peer-checked:bg-[#FFD75E] peer-checked:border-[#FFD75E] peer-checked:text-black dark:peer-checked:bg-[#FFC02E] dark:peer-checked:border-[#FFC02E] dark:peer-checked:text-black transition-all group-hover:border-[#FFD75E] dark:group-hover:border-[#FFC02E] font-medium">
+                  Vendor
+                </div>
+              </label>
+              <label class="cursor-pointer relative group">
+                <input type="radio" name="intent" value="both" class="peer sr-only" required>
+                <div class="px-4 py-2 rounded-full border-[1.4px] border-[#DBE1E7] dark:border-[#403322] text-[#656565] dark:text-[#A0A0A0] text-[13px] peer-checked:bg-[#FFD75E] peer-checked:border-[#FFD75E] peer-checked:text-black dark:peer-checked:bg-[#FFC02E] dark:peer-checked:border-[#FFC02E] dark:peer-checked:text-black transition-all group-hover:border-[#FFD75E] dark:group-hover:border-[#FFC02E] font-medium">
+                  Both
+                </div>
+              </label>
+              <label class="cursor-pointer relative group">
+                <input type="radio" name="intent" value="curious" class="peer sr-only" required>
+                <div class="px-4 py-2 rounded-full border-[1.4px] border-[#DBE1E7] dark:border-[#403322] text-[#656565] dark:text-[#A0A0A0] text-[13px] peer-checked:bg-[#FFD75E] peer-checked:border-[#FFD75E] peer-checked:text-black dark:peer-checked:bg-[#FFC02E] dark:peer-checked:border-[#FFC02E] dark:peer-checked:text-black transition-all group-hover:border-[#FFD75E] dark:group-hover:border-[#FFC02E] font-medium">
+                  Curious
+                </div>
+              </label>
+            </div>
+          </div>
           <input
             type="email"
             required
             placeholder="example@email.com"
             id="email-input"
-            class="w-full max-w-[340px] md:max-w-[380px] border-[1.4px] border-[#DBE1E7] dark:border-[#FFC02E] dark:bg-[#1a140e] dark:text-white dark:placeholder-[#888888] pl-6 py-3 rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#F7B832] focus:border-transparent fade-in-up-delay-1"
+            class="w-full max-w-[340px] md:max-w-[380px] border-[1.4px] border-[#DBE1E7] dark:border-[#FFC02E] dark:bg-[#1a140e] dark:text-white dark:placeholder-[#888888] pl-6 py-3 rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#F7B832] focus:border-transparent fade-in-up-delay-2"
           />
           <button
             type="submit"
@@ -135,16 +176,16 @@
         <img
           src="/public/circle.svg"
           alt=""
-          class="absolute -mt-55 right-0 overflow-hidden circle-svg dark:hidden w-[180px] md:w-[286px]"
+          class="absolute -mt-55 right-0 overflow-hidden circle-svg dark:hidden w-[180px] md:w-[286px] spin-slow"
         />
         <img
           src="/public/circle2.svg"
           alt=""
-          class="absolute -mt-55 right-0 overflow-hidden circle-svg hidden dark:block w-[180px] md:w-[286px]"
+          class="absolute -mt-55 right-0 overflow-hidden circle-svg hidden dark:block w-[180px] md:w-[286px] spin-slow"
         />
       </section>
-      <section class="border-t border-[#DBE1E7] pt-6 fade-in-up">
-        <div class="flex flex-col justify-center items-center gap-3">
+      <section class="border-t border-[#DBE1E7] pt-10 md:pt-6 md:pb-8 fade-in-up">
+        <div class="flex flex-col justify-center items-center gap-5">
           <img
             src="/public/logo.svg"
             alt="Ara Logo"
@@ -155,21 +196,24 @@
             alt="Ara Logo"
             class="logo-svg hidden dark:block"
           />
-          <div
+          <p class="text-[#667085] dark:text-white text-center md:text-left">
+            © 2026 Ara. All rights reserved.
+          </p>
+          <!-- <div
             class="flex gap-7 text-[#475467] dark:text-white text-[16px] pb-4"
           >
             <p>Home</p>
             <p>About Us</p>
             <p>Contact Us</p>
-          </div>
+          </div> -->
         </div>
-        <div
-          class="flex flex-col md:flex-row justify-between items-center border-t border-[#EAECF0] mx-6 md:mx-[73.33px] pt-10 md:pb-10 gap-4 md:gap-0"
+        <!-- <div
+          class="flex flex-col md:flex-row justify-between items-center  mx-6 md:mx-[73.33px] pt-10 md:pb-10 gap-4 md:gap-0"
         >
           <p class="text-[#667085] dark:text-white text-center md:text-left">
             © 2026 Ara. All rights reserved.
-          </p>
-          <div class="flex gap-4">
+          </p> -->
+          <!-- <div class="flex gap-4">
             <img
               src="/public/x.svg"
               alt="X"
@@ -185,8 +229,8 @@
               alt="Facebook"
               class="hover:scale-110 transition-transform"
             />
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
       </section>
     </main>
 
