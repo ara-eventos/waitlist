@@ -141,7 +141,9 @@ body {
   letter-spacing: 2.98px;
   vertical-align: middle;
   text-transform: uppercase;
-  animation: fadeInUp 0.8s ease-out;
+  animation: 
+    trackingExpand 1s cubic-bezier(0.215, 0.610, 0.355, 1) both,
+    textBreathe 4s ease-in-out infinite 1s;
 }
 
 .fade-in-up {
@@ -302,3 +304,122 @@ body {
     opacity: 1;
   }
 }
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-slow {
+  animation: spinSlow 40s linear infinite;
+  transform-origin: center center;
+}
+
+.icon-hover {
+  transition: scale 0.3s ease;
+  cursor: pointer;
+}
+
+.icon-hover:hover {
+  scale: 1.15;
+}
+
+@keyframes trackingExpand {
+  0% {
+    letter-spacing: -2px;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    letter-spacing: 2.98px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blurFadeIn {
+  0% {
+    filter: blur(8px);
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blur-fade-in {
+  animation: blurFadeIn 1s ease-out 0.4s both;
+}
+
+@keyframes textShine {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    to right,
+    #F7B832 20%,
+    #FFF 50%,
+    #F7B832 80%
+  );
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 3s linear infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  .text-shimmer {
+    background: linear-gradient(
+      to right,
+      #F7B832 20%,
+      #FFD75E 50%,
+      #F7B832 80%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}
+
+@keyframes textBreathe {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Mobile sequential floating icons */
+@keyframes mobileIconCycle {
+  0% { opacity: 0; transform: scale(0.5) translateY(20px) rotate(-10deg); }
+  4% { opacity: 0.8; transform: scale(1) translateY(0) rotate(5deg); }
+  12% { opacity: 0.8; transform: scale(1) translateY(-15px) rotate(-5deg); }
+  16% { opacity: 0; transform: scale(0.8) translateY(-30px) rotate(10deg); }
+  100% { opacity: 0; }
+}
+
+.mobile-cycle-1 { animation: mobileIconCycle 24s infinite 0s; }
+.mobile-cycle-2 { animation: mobileIconCycle 24s infinite 3s; }
+.mobile-cycle-3 { animation: mobileIconCycle 24s infinite 6s; }
+.mobile-cycle-4 { animation: mobileIconCycle 24s infinite 9s; }
+.mobile-cycle-5 { animation: mobileIconCycle 24s infinite 12s; }
+.mobile-cycle-6 { animation: mobileIconCycle 24s infinite 15s; }
+.mobile-cycle-7 { animation: mobileIconCycle 24s infinite 18s; }
+.mobile-cycle-8 { animation: mobileIconCycle 24s infinite 21s; }
