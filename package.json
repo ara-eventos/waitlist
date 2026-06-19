@@ -1,0 +1,7 @@
+{
+  "name": "ara-waitlist",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "echo \"window.ENV = { ARA_BASE_URL: '${ARA_BASE_URL}' };\" > env.js"
+  }
+}

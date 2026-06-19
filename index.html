@@ -128,30 +128,31 @@
         <form
           class="relative flex flex-col justify-center items-center pt-12 md:pt-24 gap-4 pb-30 md:pb-40 px-6 z-10"
           id="waitlist-form"
+          novalidate
         >
           <div class="w-full max-w-[340px] md:max-w-[380px] flex flex-col gap-3 mb-2 fade-in-up-delay-1">
             <p class="text-[14px] text-[#656565] dark:text-[#888888] text-center font-medium">I am signing up as a:</p>
             <div class="flex flex-wrap justify-center gap-2">
               <label class="cursor-pointer relative group">
-                <input type="radio" name="intent" value="planner" class="peer sr-only" required>
+                <input type="radio" name="intent" value="planner" class="peer sr-only">
                 <div class="px-4 py-2 rounded-full border-[1.4px] border-[#DBE1E7] dark:border-[#403322] text-[#656565] dark:text-[#A0A0A0] text-[13px] peer-checked:bg-[#FFD75E] peer-checked:border-[#FFD75E] peer-checked:text-black dark:peer-checked:bg-[#FFC02E] dark:peer-checked:border-[#FFC02E] dark:peer-checked:text-black transition-all group-hover:border-[#FFD75E] dark:group-hover:border-[#FFC02E] font-medium">
                   Planner
                 </div>
               </label>
               <label class="cursor-pointer relative group">
-                <input type="radio" name="intent" value="vendor" class="peer sr-only" required>
+                <input type="radio" name="intent" value="vendor" class="peer sr-only">
                 <div class="px-4 py-2 rounded-full border-[1.4px] border-[#DBE1E7] dark:border-[#403322] text-[#656565] dark:text-[#A0A0A0] text-[13px] peer-checked:bg-[#FFD75E] peer-checked:border-[#FFD75E] peer-checked:text-black dark:peer-checked:bg-[#FFC02E] dark:peer-checked:border-[#FFC02E] dark:peer-checked:text-black transition-all group-hover:border-[#FFD75E] dark:group-hover:border-[#FFC02E] font-medium">
                   Vendor
                 </div>
               </label>
               <label class="cursor-pointer relative group">
-                <input type="radio" name="intent" value="both" class="peer sr-only" required>
+                <input type="radio" name="intent" value="both" class="peer sr-only">
                 <div class="px-4 py-2 rounded-full border-[1.4px] border-[#DBE1E7] dark:border-[#403322] text-[#656565] dark:text-[#A0A0A0] text-[13px] peer-checked:bg-[#FFD75E] peer-checked:border-[#FFD75E] peer-checked:text-black dark:peer-checked:bg-[#FFC02E] dark:peer-checked:border-[#FFC02E] dark:peer-checked:text-black transition-all group-hover:border-[#FFD75E] dark:group-hover:border-[#FFC02E] font-medium">
                   Both
                 </div>
               </label>
               <label class="cursor-pointer relative group">
-                <input type="radio" name="intent" value="curious" class="peer sr-only" required>
+                <input type="radio" name="intent" value="curious" class="peer sr-only">
                 <div class="px-4 py-2 rounded-full border-[1.4px] border-[#DBE1E7] dark:border-[#403322] text-[#656565] dark:text-[#A0A0A0] text-[13px] peer-checked:bg-[#FFD75E] peer-checked:border-[#FFD75E] peer-checked:text-black dark:peer-checked:bg-[#FFC02E] dark:peer-checked:border-[#FFC02E] dark:peer-checked:text-black transition-all group-hover:border-[#FFD75E] dark:group-hover:border-[#FFC02E] font-medium">
                   Curious
                 </div>
@@ -167,6 +168,7 @@
           />
           <button
             type="submit"
+            id="submit-button"
             class="w-full max-w-[340px] md:max-w-[380px] md:w-auto bg-gradient-to-b from-[#FFD75E] to-[#F0A011] rounded-3xl px-8 md:px-33 py-3 cta-shadow font-semibold hover:from-[#F7B832] hover:to-[#F0A011] transition-colors duration-300 hover:scale-105 transform cursor-pointer shimmer-button fade-in-up-delay-2"
           >
             Join the waitlist
@@ -233,6 +235,9 @@
         <!-- </div> -->
       </section>
     </main>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed top-5 right-5 z-[100] flex flex-col gap-3 pointer-events-none"></div>
 
     <!-- Success Modal Overlay -->
     <div
@@ -319,6 +324,7 @@
       </div>
     </div>
 
+    <script src="env.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
