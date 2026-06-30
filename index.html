@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -167,6 +168,9 @@
             id="email-input"
             class="w-full max-w-[340px] md:max-w-[380px] border-[1.4px] border-[#DBE1E7] dark:border-[#FFC02E] dark:bg-[#1a140e] dark:text-white dark:placeholder-[#888888] pl-6 py-3 rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#F7B832] focus:border-transparent fade-in-up-delay-2"
           />
+          <div class="w-full max-w-[340px] md:max-w-[380px] flex justify-center mb-1 fade-in-up-delay-2">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAADtPlPMkSxl0T5Fh" data-theme="auto" data-callback="turnstileCallback"></div>
+          </div>
           <button
             type="submit"
             id="submit-button"

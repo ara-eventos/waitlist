@@ -1,5 +1,14 @@
 const ARA_BASE_URL = window.ENV.ARA_BASE_URL;
 
+// Stores the Cloudflare Turnstile token once the widget completes the challenge.
+// The `data-callback="turnstileCallback"` attribute in index.html calls this function.
+let turnstileToken = null;
+function turnstileCallback(token) {
+  turnstileToken = token;
+}
+
+
+
 const form = document.getElementById("waitlist-form");
 const modal = document.getElementById("success-modal");
 const modalBox = modal.querySelector(".modal-box-anim");
@@ -86,7 +95,14 @@ form.addEventListener("submit", async (e) => {
     return;
   }
   
+  // Guard: the Turnstile widget must have completed before we submit
+  if (!turnstileToken) {
+    showToast("Please complete the security check.", "error");
+    return;
+  }
+
   const intent = intentInput.value;
+
   
   // Set loading state
     const originalBtnText = submitBtn.innerText;
@@ -95,36 +111,46 @@ form.addEventListener("submit", async (e) => {
     submitBtn.classList.add("opacity-75", "cursor-not-allowed");
 
     try {
-      const response = await fetch(`${ARA_BASE_URL}/api/v1/waitlist/join`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, intent })
-      });
+    const response = await fetch(`${ARA_BASE_URL}/api/v1/waitlist/join`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // 2. Pass the token over to your backend API
+      body: JSON.stringify({ email, intent, token: turnstileToken })
+    });
 
-      const data = await response.json().catch(() => null);
+    const data = await response.json().catch(() => null);
 
-      if (response.status === 201) {
-        // We can still trigger the big modal if we want, but let's use the toast for consistency.
-        openModal(); // Keeping the big fancy modal for success because it has confetti
-        showToast("Welcome abroad! You have successfully joined the Ara waitlist.", "success");
-        emailInput.value = ""; 
-        intentInput.checked = false; 
-      } else if (response.status === 409) {
-        showToast(data?.Message || "This email is already on the Ara waitlist!", "error");
-      } else {
-        showToast(data?.Message || "Something went wrong. Please try again.", "error");
-      }
-    } catch (error) {
-      console.error("Error joining waitlist:", error);
-      showToast("Network error. Please check your connection.", "error");
-    } finally {
-      // Restore button state
-      submitBtn.innerText = originalBtnText;
-      submitBtn.disabled = false;
-      submitBtn.classList.remove("opacity-75", "cursor-not-allowed");
+    if (response.status === 201) {
+      openModal(); 
+      showToast("Welcome aboard! You have successfully joined the Ara waitlist.", "success");
+      emailInput.value = ""; 
+      intentInput.checked = false; 
+      
+      // 3. Reset the widget so it's clean for another potential submission
+      turnstileToken = null;
+      turnstile.reset();
+    } else if (response.status === 409) {
+      showToast(data?.Message || "This email is already on the Ara waitlist!", "error");
+      turnstileToken = null;
+      turnstile.reset(); // Reset on error too
+    } else {
+      showToast(data?.Message || "Something went wrong. Please try again.", "error");
+      turnstileToken = null;
+      turnstile.reset();
     }
+  } catch (error) {
+    console.error("Error joining waitlist:", error);
+    showToast("Network error. Please check your connection.", "error");
+    turnstileToken = null;
+    turnstile.reset();
+  } finally {
+    // Restore button state
+    submitBtn.innerText = originalBtnText;
+    submitBtn.disabled = false;
+    submitBtn.classList.remove("opacity-75", "cursor-not-allowed");
+  }
 });
 
 closeBtn.addEventListener("click", closeModal);
